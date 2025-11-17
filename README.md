@@ -19,46 +19,12 @@ This method satisfies desirable properties like **sensitivity** (if an input fea
 
 ## Installation
 ```bash
-pip install torch torchvision transformers pillow numpy matplotlib tqdm
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 ```
 
 For Apple Silicon Macs, ensure you have MPS support enabled in PyTorch.
-
-## Usage
-
-### Basic Example
-```python
-from ig_vision import ig
-
-# Analyze an image with default settings (CNN model, black baseline)
-results = ig('path/to/your/image.jpg')
-```
-
-### Advanced Usage
-```python
-# Use Vision Transformer with white baseline
-results = ig('cat.jpg', 
-             model='vit', 
-             baseline='white',
-             num_alpha_steps=30)
-
-# Use noise baseline with more integration steps
-results = ig('dog.jpg',
-             baseline='noise',
-             num_alphas=3,
-             num_alpha_steps=50)
-```
-
-## Parameters
-
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `image_url` | str | required | Path to the input image |
-| `num_alphas` | int | 1 | Number of upper bound alphas for integration |
-| `num_alpha_steps` | int | 15 | Number of interpolation steps between baseline and image |
-| `model` | str | 'cnn' | Model architecture: `'cnn'` (ConvNeXt) or `'vit'` (Vision Transformer) |
-| `baseline` | str | 'black' | Baseline type: `'black'`, `'white'`, or `'noise'` |
-| `flip` | bool | False | Whether to flip the image vertically |
 
 ## Output
 
@@ -105,12 +71,12 @@ For most natural images, black baseline is recommended.
 ## Example Results
 ```python
 # Analyze a dog image
-ig('golden_retriever.jpg', model='vit', num_alpha_steps=25)
+ig('golden_retriever.jpg', model='can', num_alpha_steps=25)
 ```
 
 Output:
 ```
-Using black baseline and vit model
+Using black baseline and can model
 Using device: mps
 
 Top 3 classes:
