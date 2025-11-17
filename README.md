@@ -71,12 +71,12 @@ For most natural images, black baseline is recommended.
 ## Example Results
 ```python
 # Analyze a dog image
-ig('golden_retriever.jpg', model='can', num_alpha_steps=25)
+ig('golden_retriever.jpg', model='cnn', num_alpha_steps=25)
 ```
 
 Output:
 ```
-Using black baseline and can model
+Using black baseline and cnn model
 Using device: mps
 
 Top 3 classes:
